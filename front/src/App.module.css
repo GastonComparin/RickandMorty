@@ -1,0 +1,32 @@
+/* Fondo de la pagina */
+* {
+  margin: 0;
+}
+.fondo {
+  text-align: center;
+  background-color: rgb(0, 18, 19);
+  height: 1000vh;
+  position: relative;
+  top:0;
+  width: 100%;
+  
+
+
+  /* background-image: url(./assets/img/rick-y-morty-como-breaking-bad_3840x2160_xtrafondos.com.jpg);*/
+}
+  
+.h1 {
+  padding: 20px;
+  color: rgb(110, 161, 160);
+  text-shadow: rgba(255, 255, 255, 1) 0px 0px 16px;
+  text-shadow: rgba(255, 255, 255, 1) 0px 0px 30px;
+  text-shadow: rgba(255, 255, 255, 1) 0px 0px 50px;
+}
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+a {
+  color: rgb(3, 61, 62);
+}
