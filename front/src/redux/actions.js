@@ -7,16 +7,10 @@ export const GET_FAVORITES = "GET_FAVORITES";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const FILTER = "FILTER";
 export const ORDER = "ORDER";
+export const SET_FILTERED_FAVORITES = "SET_FILTERED_FAVORITES";
 
-export const getFavorites = () => {
-  return async function (dispatch) {
-    const URL_BASE = "http://localhost:3001";
-    const response = await axios.get(`${URL_BASE}/rickandmorty/fav`);
-    dispatch({ type: GET_FAVORITES, payload: response.data });
-  };
-};
 export const getCharacterDetail = (id) => {
-  console.log(`al actions llegmaos con ${id}`);
+  console.log(`al actions llegamos con ${id}`);
   return async function (dispatch) {
     const URL_BASE = "http://localhost:3001";
     const response = await axios.get(`${URL_BASE}/detail/${id}`);
@@ -25,6 +19,14 @@ export const getCharacterDetail = (id) => {
 };
 export const cleanDetail = () => {
   return { type: CLEAN_DETAIL };
+};
+
+export const getFavorites = () => {
+  return async function (dispatch) {
+    const URL_BASE = "http://localhost:3001";
+    const response = await axios.get(`${URL_BASE}/rickandmorty/fav`);
+    dispatch({ type: GET_FAVORITES, payload: response.data });
+  };
 };
 export const removeFavorite = (id) => {
   return { type: REMOVE_FAVORITE, payload: id };

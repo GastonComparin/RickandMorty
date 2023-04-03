@@ -7,14 +7,16 @@ import { Contenedor } from "./StyledComponents";
 export default function Favorites() {
   const favorites = useSelector((state) => state.myFavorites);
   const dispatch = useDispatch();
-  const order =  (event) => {
+
+  const order = (event) => {
     console.log(`pasó por el order con ${event.target.value}`);
     dispatch(orderCards(event.target.value));
   };
+
   const filter = (event) => {
-    console.log(`pasó por el filter con ${event.target.value}`);
     dispatch(filterCards(event.target.value));
   };
+
   return (
     <>
       <select onChange={order}>
@@ -24,7 +26,6 @@ export default function Favorites() {
           </option>
         ))}
       </select>
-
       <select onChange={filter}>
         {["All", "Male", "Female", "unknown", "Genderless"].map(
           (event, index) => (
@@ -33,8 +34,7 @@ export default function Favorites() {
             </option>
           )
         )}
-      </select>
-
+      </select>{" "}
       <Contenedor>
         {favorites.length === 0 ? (
           <p style={{ color: "violet", marginTop: "150px", fontSize: "24px" }}>
@@ -49,6 +49,7 @@ export default function Favorites() {
               species={species}
               gender={gender}
               image={image}
+              showCloseButton={false}
             />
           ))
         )}

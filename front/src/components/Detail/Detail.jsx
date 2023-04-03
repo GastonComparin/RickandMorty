@@ -7,6 +7,7 @@ import {
   DetailImg,
   DetailTextCont,
   CardBtn,
+  IdNumber,
 } from "./StyledComponents";
 export default function Detail() {
   //!ESTADOS
@@ -33,27 +34,24 @@ export default function Detail() {
             <h1>
               Name:<p>{character?.name}</p>{" "}
             </h1>
-            <p>
-              Status: <p>{character?.status}</p>
-            </p>
-            <hr />
+
             <p>
               Specie: <p>{character?.species}</p>
             </p>
-            <hr />
+
             <p>
               Gender: <p>{character?.gender}</p>
             </p>
-            <hr />
+
             <p>
               Origin: <p>{character?.origin?.name}</p>
             </p>
           </DetailTextCont>
           <DetailImg src={character?.image} alt={character.name} />
           <Link to="/home">
-            {/* Botón para cerrar el detalle del personaje y volver a la página principal */}
             <CardBtn>X</CardBtn>
           </Link>
+          <IdNumber>{character.id}</IdNumber>
         </DetailCont>
       )}
       {<h3>Loading...</h3>}

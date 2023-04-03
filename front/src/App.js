@@ -30,12 +30,12 @@ export function App() {
   const logout = () => {
     setAccess(false);
   };
-  
-    //? Efecto para redirigir al usuario si no ha iniciado sesión
-    useEffect(() => {
-      !access && navigate("/");
-    }, [access]);
-//?---------------------------------------------------------------
+
+  //? Efecto para redirigir al usuario si no ha iniciado sesión
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
+  //?---------------------------------------------------------------
 
   //? Función para buscar personajes
   const onSearch = (id) => {
@@ -68,7 +68,7 @@ export function App() {
 
   //? Renderización del componente
   return (
-    <div className={style.fondo}>
+    <div>
       <h1 className={style.h1}>RICK AND MORTY character finder </h1>
       <Nav onSearch={onSearch} />
       <div>

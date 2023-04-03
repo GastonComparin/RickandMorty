@@ -1,7 +1,5 @@
 //!
 import {
-  ADD_FAVORITE,
-  REMOVE_FAVORITE,
   FILTER,
   ORDER,
   GET_FAVORITES,
@@ -17,15 +15,13 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-
-
     case GET_CHARACTER_DETAIL:
       console.log(`en el reducer tenemos ${action.payload}`);
       return {
         ...state,
         characterDetail: action.payload,
       };
-      
+
     case CLEAN_DETAIL:
       return {
         ...state,
@@ -35,31 +31,29 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         myFavorites: action.payload,
+        allCharacters: action.payload,
       };
-    case FILTER:
-      if (action.payload === "All") {
-        return {
-          ...state,
-          filteredFavorites: [...state.myFavorites],
-        };
-      }
-      const filteredFavorites = state.myFavorites.filter(
-        (char) => char.gender === action.payload
-      );
-      return {
-        ...state,
-        filteredFavorites: filteredFavorites,
-      };
-
     case ORDER:
-      console.log(`llegamos al reducer con ${action.payload}`);
       const sortedFavorites =
         action.payload === "Ascendente"
-          ? [...state.filteredFavorites].sort((a, b) => a.id - b.id)
-          : [...state.filteredFavorites].sort((a, b) => b.id - a.id);
+          ? [...state.myFavorites].sort((a, b) => a.id - b.id)
+          : [...state.myFavorites].sort((a, b) => b.id - a.id);
       return {
         ...state,
-        filteredFavorites: sortedFavorites,
+        myFavorites: sortedFavorites,
+      };
+
+    // FUNCIONA BIEN PERO NO ESTA RENDERIZANDO CORRECTAMENTE
+    case FILTER:
+      const filteredFavorites =
+        action.payload === "All"
+          ? state.allCharacters
+          : state.allCharacters.filter((char) => char.gender === action.payload);
+
+      //
+      return {
+        ...state,
+        myFavorites: filteredFavorites,
       };
     default:
       return { ...state };
@@ -67,3 +61,6 @@ const rootReducer = (state = initialState, action) => {
 };
 
 export default rootReducer;
+
+// console.log("al reducer llegamos con:", action.payload);
+// console.log(filteredFavorites);

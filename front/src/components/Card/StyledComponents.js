@@ -15,6 +15,9 @@ const Contenedor = styled.div`
     -webkit-box-shadow: 10px 8px 119px 53px rgba(110, 161, 160, 0.75);
     -moz-box-shadow: 10px 8px 119px 53px rgba(110, 161, 160, 0.75);
   }
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 //Imagen
 const CardImg = styled.img`
@@ -23,6 +26,9 @@ const CardImg = styled.img`
   border-width: 3px;
   border-style: solid;
   width: 90%;
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 `;
 //textos dentro de la imagen
 const Cardh2 = styled.h2`
@@ -44,6 +50,7 @@ const CardBtn = styled.button`
   background-color: rgb(157, 109, 109);
   &:hover {
     background-color: rgb(139, 90, 90);
+    cursor: pointer;
   }
 `;
 //boton de fav
@@ -52,13 +59,16 @@ const FavBtn = styled.button`
   padding-left: 15px;
   padding-right: 15px;
   background-color: rgb(110, 161, 160);
+  margin-bottom: 4px;
   &:hover {
     background-color: rgb(59, 109, 109);
+    cursor: pointer;
   }
 `;
 //alineacion del text dentro de la tarjeta
 const ContTxt = styled.div`
   margin-top: 3px;
+  margin-bottom: 3px;
   display: flex;
   justify-content: space-around;
   align-items: center;

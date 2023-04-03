@@ -1,4 +1,4 @@
-import { NavBarStyles, LogOutStyle, TitleStyle } from "./StyledComponents";
+import { Container, LogOutStyle, TitleStyle } from "./StyledComponents";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link, useLocation } from "react-router-dom";
 
@@ -7,11 +7,12 @@ export default function Nav({ onSearch }) {
   if (url.pathname !== "/") {
     return (
       <div>
-        <NavBarStyles>
+        <Container>
           
           <Link to="/">
             <LogOutStyle>LogOut</LogOutStyle>
           </Link>
+          
           <SearchBar onSearch={onSearch} />
           <Link to="/about">
             <TitleStyle>About</TitleStyle>
@@ -22,7 +23,7 @@ export default function Nav({ onSearch }) {
           <Link to="/home">
             <TitleStyle>Home</TitleStyle>
           </Link>
-        </NavBarStyles>
+        </Container>
       </div>
     );
   }

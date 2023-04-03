@@ -14,19 +14,32 @@ import axios from "axios";
 
 //!COMIENZO DE LA FUNCION
 
-function Card({ id, name, species, gender, image, onClose, myFavorites }) {
-  //! ESTADOS Y FUCIONES PARA EL MANEJO DE FAVORTITOS
+function Card({
+  id,
+  name,
+  species,
+  gender,
+  image,
+  onClose,
+  myFavorites,
+  showCloseButton = true,
+}) {
   const [isFav, setIsFav] = useState(false);
+  //! ESTADOS Y FUCIONES PARA EL MANEJO DE FAVORTITOS
   const dispatch = useDispatch();
 
   const addFavorite = async (character) => {
     await axios.post("http://localhost:3001/rickandmorty/fav", character);
-    dispatch(getFavorites()).then((res) => console.log("Personaje agregado a favs"));
+    dispatch(getFavorites()).then((res) =>
+      console.log("Personaje agregado a favs")
+    );
   };
 
   const removeFavorite = async (id) => {
     await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
-    dispatch(getFavorites()).then((res) => console.log("Personaje eliminado de favs"));
+    dispatch(getFavorites()).then((res) =>
+      console.log("Personaje eliminado de favs")
+    );
   };
 
   useEffect(() => {
@@ -56,11 +69,9 @@ function Card({ id, name, species, gender, image, onClose, myFavorites }) {
   //!ESTO ES LO QUE VA MOSTRAR CUANDO LA MANDE A CARDS
   return (
     <Contenedor>
-      {isFav ? (
-        <FavBtn onClick={handleFavorite}>❤️</FavBtn>
-      ) : (
-        <FavBtn onClick={handleFavorite}>🤍</FavBtn>
-      )}
+      {isFav
+        ?   <FavBtn onClick={handleFavorite}>❤️</FavBtn>
+        :  <FavBtn onClick={handleFavorite}>🤍</FavBtn>}
       <CardImg src={image} />
       <Link to={`/detail/${id}`}>
         <Cardh2>{name}</Cardh2>
@@ -69,7 +80,7 @@ function Card({ id, name, species, gender, image, onClose, myFavorites }) {
         <Cardh2>{species}</Cardh2>
         <Cardh2>{gender}</Cardh2>
       </ContTxt>
-      <CardBtn onClick={onClose}>X</CardBtn>
+      {showCloseButton && <CardBtn onClick={() => onClose(id)}>X</CardBtn>}
     </Contenedor>
   );
 }
