@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getCharacterDetail, cleanDetail } from "../../redux/actions";
 import {
-  DetailCont,
-  DetailImg,
-  DetailTextCont,
-  CardBtn,
+  Container,
+  Image,
+  TextContainer,
+  Button,
   IdNumber,
 } from "./StyledComponents";
 export default function Detail() {
@@ -28,33 +28,29 @@ export default function Detail() {
   //!Renderiza el componente
   return (
     <div>
-      {character?.name && ( // Mostrar el detalle del personaje solo si tiene un nombre (para evitar errores de renderizado)
-        <DetailCont>
-          <DetailTextCont>
-            <h1>
-              Name:<p>{character?.name}</p>{" "}
-            </h1>
-
+      {character?.name ? (
+        <Container>
+          <TextContainer>
+            Name:<h3>{character?.name}</h3>
             <p>
               Specie: <p>{character?.species}</p>
             </p>
-
             <p>
               Gender: <p>{character?.gender}</p>
             </p>
-
             <p>
               Origin: <p>{character?.origin?.name}</p>
             </p>
-          </DetailTextCont>
-          <DetailImg src={character?.image} alt={character.name} />
+          </TextContainer>
+          <Image src={character?.image} alt={character.name} />
           <Link to="/home">
-            <CardBtn>X</CardBtn>
+            <Button>X</Button>
           </Link>
           <IdNumber>{character.id}</IdNumber>
-        </DetailCont>
+        </Container>
+      ) : (
+        <h3>Loading...</h3>
       )}
-      {<h3>Loading...</h3>}
     </div>
   );
 }

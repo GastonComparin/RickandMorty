@@ -1,8 +1,8 @@
 import {
-  FormStyleCont,
-  FormStyleLabel,
-  FormStyleInput,
-  FormStyleButton,
+  Container,
+  Label,
+  Input,
+  Button,
   ErrorMsg,
 } from "./StyledComponents";
 import { useState } from "react";
@@ -56,11 +56,11 @@ const Form = (props) => {
   // Renderizar el formulario con sus respectivos inputs y mensajes de error
   return (
     <div>
-      <FormStyleCont onSubmit={handleSubmit}>
+      <Container onSubmit={handleSubmit}>
         {/* <h3>usuario : gaston@mail.com</h3> <h3>password: gastonC00</h3> */}
 
-        <FormStyleLabel name="username">Username:</FormStyleLabel>
-        <FormStyleInput
+        <Label name="username">Username:</Label>
+        <Input
           type="text"
           name="username"
           value={userData.username}
@@ -68,16 +68,16 @@ const Form = (props) => {
         />
         {errors.username !== "" ? <ErrorMsg>{errors.username}</ErrorMsg> : ""}
 
-        <FormStyleLabel name="password">Password:</FormStyleLabel>
-        <FormStyleInput
+        <Label name="password">Password:</Label>
+        <Input
           type="password"
           name="password"
           value={userData.password}
           onChange={handleInputChange}
         />
         {errors.password !== "" ? <ErrorMsg>{errors.password}</ErrorMsg> : ""}
-        <FormStyleButton type="submit">Login</FormStyleButton>
-      </FormStyleCont>
+        <Button type="submit">Login</Button>
+      </Container>
     </div>
   );
 };

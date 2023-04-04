@@ -1,3 +1,4 @@
+//! Codigo seguro
 import { useState } from "react";
 import {
   SearchBarStyles,
